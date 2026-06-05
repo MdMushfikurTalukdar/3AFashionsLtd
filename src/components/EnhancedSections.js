@@ -103,7 +103,7 @@ const EnhancedSections = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [statsData.clients, statsData.experience, statsData.projects]);
 
   return (
     <>
