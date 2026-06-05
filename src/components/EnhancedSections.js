@@ -1,7 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  Box, Container, Grid, Typography, Button, Paper, alpha,
-  useTheme, useMediaQuery, Fade, Slide, Grow, Card, Avatar, Chip
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Button,
+  Paper,
+  alpha,
+  useTheme,
+  useMediaQuery,
+  Fade,
+  Slide,
+  Grow,
+  Card,
+  Avatar,
+  Chip
 } from '@mui/material';
 import {
   CheckCircle as CheckCircleIcon,
@@ -13,23 +26,26 @@ import {
 } from '@mui/icons-material';
 import { keyframes } from '@emotion/react';
 
-const statsData = {
-  projects: 350,
-  clients: 240,
-  experience: 15,
-};
-
+// Animation for counter
 const countAnimation = keyframes`
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
+// Animation for floating elements
 const float = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 `;
 
+// Pulse animation for background elements
 const pulse = keyframes`
   0% { transform: scale(1); opacity: 0.7; }
   50% { transform: scale(1.05); opacity: 0.8; }
@@ -43,62 +59,58 @@ const EnhancedSections = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const currentSection = sectionRef.current;
-    let timer = null;
+  const statsData = {
+    projects: 350,
+    clients: 240,
+    experience: 15,
+  };
 
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-
+          
+          // Animate statistics counting up
           const duration = 2000;
           const steps = 60;
           const interval = duration / steps;
           let step = 0;
-
-          timer = setInterval(() => {
+          
+          const timer = setInterval(() => {
             step += 1;
-
             setStats({
               projects: Math.min(statsData.projects, Math.floor((statsData.projects * step) / steps)),
               clients: Math.min(statsData.clients, Math.floor((statsData.clients * step) / steps)),
               experience: Math.min(statsData.experience, Math.floor((statsData.experience * step) / steps)),
             });
 
-            if (step >= steps) {
-              clearInterval(timer);
-            }
+            if (step >= steps) clearInterval(timer);
           }, interval);
 
-          observer.unobserve(entry.target);
+          return () => clearInterval(timer);
         }
       },
       { threshold: 0.3 }
     );
 
-    if (currentSection) {
-      observer.observe(currentSection);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      if (timer) {
-        clearInterval(timer);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
-
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
-
-      observer.disconnect();
     };
   }, []);
 
   return (
     <>
-      <Box
+      {/* Statistics Section */}
+      <Box 
         ref={sectionRef}
-        sx={{
+        sx={{ 
           py: 10,
           position: 'relative',
           overflow: 'hidden',
@@ -114,14 +126,14 @@ const EnhancedSections = () => {
             backgroundImage: `radial-gradient(circle at 20% 80%, ${alpha(theme.palette.primary.light, 0.2)} 0%, transparent 40%),
                               radial-gradient(circle at 80% 20%, ${alpha(theme.palette.secondary.light, 0.2)} 0%, transparent 40%)`,
             zIndex: 0,
-          },
+          }
         }}
       >
         <Container sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={4}>
               <Fade in={isVisible} timeout={1000}>
-                <Box sx={{
+                <Box sx={{ 
                   textAlign: 'center',
                   p: 3,
                   borderRadius: 4,
@@ -133,9 +145,9 @@ const EnhancedSections = () => {
                   '&:hover': {
                     transform: 'translateY(-5px)',
                     boxShadow: `0 12px 28px ${alpha(theme.palette.common.black, 0.3)}`,
-                  },
+                  }
                 }}>
-                  <Box sx={{
+                  <Box sx={{ 
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -147,11 +159,11 @@ const EnhancedSections = () => {
                   }}>
                     <TrophyIcon sx={{ fontSize: 40 }} />
                   </Box>
-                  <Typography
-                    variant="h2"
-                    fontWeight="bold"
+                  <Typography 
+                    variant="h2" 
+                    fontWeight="bold" 
                     gutterBottom
-                    sx={{
+                    sx={{ 
                       animation: `${countAnimation} 1s ease-out`,
                       background: `linear-gradient(45deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
                       backgroundClip: 'text',
@@ -168,10 +180,10 @@ const EnhancedSections = () => {
                 </Box>
               </Fade>
             </Grid>
-
+            
             <Grid item xs={12} md={4}>
               <Fade in={isVisible} timeout={1000} style={{ transitionDelay: '300ms' }}>
-                <Box sx={{
+                <Box sx={{ 
                   textAlign: 'center',
                   p: 3,
                   borderRadius: 4,
@@ -184,9 +196,9 @@ const EnhancedSections = () => {
                   '&:hover': {
                     transform: 'translateY(-5px)',
                     boxShadow: `0 12px 28px ${alpha(theme.palette.common.black, 0.3)}`,
-                  },
+                  }
                 }}>
-                  <Box sx={{
+                  <Box sx={{ 
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -198,11 +210,11 @@ const EnhancedSections = () => {
                   }}>
                     <TeamIcon sx={{ fontSize: 40 }} />
                   </Box>
-                  <Typography
-                    variant="h2"
-                    fontWeight="bold"
+                  <Typography 
+                    variant="h2" 
+                    fontWeight="bold" 
                     gutterBottom
-                    sx={{
+                    sx={{ 
                       animation: `${countAnimation} 1s ease-out`,
                       animationDelay: '0.3s',
                       background: `linear-gradient(45deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
@@ -220,10 +232,10 @@ const EnhancedSections = () => {
                 </Box>
               </Fade>
             </Grid>
-
+            
             <Grid item xs={12} md={4}>
               <Fade in={isVisible} timeout={1000} style={{ transitionDelay: '600ms' }}>
-                <Box sx={{
+                <Box sx={{ 
                   textAlign: 'center',
                   p: 3,
                   borderRadius: 4,
@@ -236,9 +248,9 @@ const EnhancedSections = () => {
                   '&:hover': {
                     transform: 'translateY(-5px)',
                     boxShadow: `0 12px 28px ${alpha(theme.palette.common.black, 0.3)}`,
-                  },
+                  }
                 }}>
-                  <Box sx={{
+                  <Box sx={{ 
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -250,11 +262,11 @@ const EnhancedSections = () => {
                   }}>
                     <ToolsIcon sx={{ fontSize: 40 }} />
                   </Box>
-                  <Typography
-                    variant="h2"
-                    fontWeight="bold"
+                  <Typography 
+                    variant="h2" 
+                    fontWeight="bold" 
                     gutterBottom
-                    sx={{
+                    sx={{ 
                       animation: `${countAnimation} 1s ease-out`,
                       animationDelay: '0.6s',
                       background: `linear-gradient(45deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
@@ -276,6 +288,7 @@ const EnhancedSections = () => {
         </Container>
       </Box>
 
+      {/* About Section */}
       <Container sx={{ py: 10 }}>
         <Grid container spacing={6} alignItems="center" direction={isMobile ? 'column-reverse' : 'row'}>
           <Grid item xs={12} md={6}>
@@ -292,14 +305,14 @@ const EnhancedSections = () => {
                   }}
                 />
               </Slide>
-
-              <Paper
-                elevation={8}
-                sx={{
-                  position: 'absolute',
-                  bottom: -30,
-                  right: -30,
-                  p: 3,
+              
+              <Paper 
+                elevation={8} 
+                sx={{ 
+                  position: 'absolute', 
+                  bottom: -30, 
+                  right: -30, 
+                  p: 3, 
                   borderRadius: 3,
                   bgcolor: theme.palette.common.white,
                   boxShadow: `0 16px 32px ${alpha(theme.palette.common.black, 0.1)}`,
@@ -310,15 +323,18 @@ const EnhancedSections = () => {
                 <Typography variant="h4" fontWeight="bold" color="primary.main">
                   15+
                 </Typography>
-                <Typography variant="body2">Years Experience</Typography>
+                <Typography variant="body2">
+                  Years Experience
+                </Typography>
               </Paper>
-
-              <Card
-                sx={{
-                  position: 'absolute',
-                  top: 40,
-                  left: -30,
-                  p: 2,
+              
+              {/* Floating elements */}
+              <Card 
+                sx={{ 
+                  position: 'absolute', 
+                  top: 40, 
+                  left: -30, 
+                  p: 2, 
                   borderRadius: 3,
                   display: { xs: 'none', lg: 'block' },
                   animation: `${float} 5s ease-in-out infinite`,
@@ -335,34 +351,34 @@ const EnhancedSections = () => {
               </Card>
             </Box>
           </Grid>
-
+          
           <Grid item xs={12} md={6}>
             <Box sx={{ position: 'relative' }}>
-              <Chip
-                label="ABOUT US"
-                color="primary"
+              <Chip 
+                label="ABOUT US" 
+                color="primary" 
                 variant="outlined"
-                sx={{
-                  mb: 2,
-                  px: 1,
+                sx={{ 
+                  mb: 2, 
+                  px: 1, 
                   fontWeight: 'bold',
-                  background: alpha(theme.palette.primary.main, 0.1),
-                }}
+                  background: alpha(theme.palette.primary.main, 0.1)
+                }} 
               />
-
+              
               <Typography variant="h3" fontWeight="bold" gutterBottom>
                 Building Excellence Since 2024
               </Typography>
-
+              
               <Typography variant="body1" color="text.secondary" paragraph sx={{ mb: 3 }}>
-                With over 15 years of experience in the construction industry, VersaBuild has
-                established itself as a leader in quality construction and customer satisfaction.
+                With over 15 years of experience in the construction industry, VersaBuild has 
+                established itself as a leader in quality construction and customer satisfaction. 
                 Our team of skilled professionals is dedicated to turning your vision into reality.
               </Typography>
-
+              
               <Box sx={{ mb: 3 }}>
                 {['Quality Materials', 'Skilled Professionals', 'On-Time Delivery', 'Competitive Pricing'].map((item, index) => (
-                  <Grow in={true} timeout={800} key={item} style={{ transitionDelay: `${index * 200}ms` }}>
+                  <Grow in={true} timeout={800} key={index} style={{ transitionDelay: `${index * 200}ms` }}>
                     <Box display="flex" alignItems="center" sx={{ mb: 1.5 }}>
                       <CheckCircleIcon color="primary" sx={{ mr: 1.5 }} />
                       <Typography variant="body1" fontWeight="500">{item}</Typography>
@@ -370,77 +386,82 @@ const EnhancedSections = () => {
                   </Grow>
                 ))}
               </Box>
-
+              
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 4 }}>
                 <Button
                   variant="contained"
                   color="primary"
                   size="large"
                   endIcon={<EastIcon />}
-                  sx={{
-                    px: 4,
+                  sx={{ 
+                    px: 4, 
                     py: 1.5,
                     borderRadius: 2,
                     background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                     boxShadow: `0 8px 16px ${alpha(theme.palette.primary.main, 0.3)}`,
                     '&:hover': {
                       boxShadow: `0 12px 20px ${alpha(theme.palette.primary.main, 0.4)}`,
-                    },
+                    }
                   }}
                 >
                   Learn More About Us
                 </Button>
-
+                
                 <Button
                   variant="outlined"
                   color="primary"
                   size="large"
                   startIcon={<PlayIcon />}
-                  sx={{
-                    px: 4,
+                  sx={{ 
+                    px: 4, 
                     py: 1.5,
                     borderRadius: 2,
                     borderWidth: 2,
                     '&:hover': {
                       borderWidth: 2,
-                    },
+                    }
                   }}
                 >
                   Watch Video
                 </Button>
               </Box>
-
+              
+              {/* Achievement badges */}
               <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
-                <Paper
-                  elevation={2}
-                  sx={{
-                    p: 2,
-                    borderRadius: 3,
+                <Paper 
+                  elevation={2} 
+                  sx={{ 
+                    p: 2, 
+                    borderRadius: 3, 
                     textAlign: 'center',
                     flex: 1,
-                    background: alpha(theme.palette.primary.main, 0.05),
+                    background: alpha(theme.palette.primary.main, 0.05)
                   }}
                 >
                   <Typography variant="h5" fontWeight="bold" color="primary.main">
                     20+
                   </Typography>
-                  <Typography variant="body2">Team Members</Typography>
+                  <Typography variant="body2">
+                    Team Members
+                  </Typography>
                 </Paper>
-
-                <Paper
-                  elevation={2}
-                  sx={{
-                    p: 2,
-                    borderRadius: 3,
+                
+                <Paper 
+                  elevation={2} 
+                  sx={{ 
+                    p: 2, 
+                    borderRadius: 3, 
                     textAlign: 'center',
                     flex: 1,
-                    background: alpha(theme.palette.primary.main, 0.05),
+                    background: alpha(theme.palette.primary.main, 0.05)
                   }}
                 >
                   <Typography variant="h5" fontWeight="bold" color="primary.main">
                     98%
                   </Typography>
-                  <Typography variant="body2">Client Satisfaction</Typography>
+                  <Typography variant="body2">
+                    Client Satisfaction
+                  </Typography>
                 </Paper>
               </Box>
             </Box>
