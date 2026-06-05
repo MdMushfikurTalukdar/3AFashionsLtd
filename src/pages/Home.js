@@ -235,7 +235,7 @@ const Home = () => {
       <EnhancedSections />
 
       {/* Testimonials Section */}
-      {/* <Box sx={{ bgcolor: 'grey.50', py: 10 }}>
+      <Box sx={{ bgcolor: 'grey.50', py: 10 }}>
         <Container>
           <Box textAlign="center" sx={{ mb: 6 }}>
             <Typography variant="h3" fontWeight="bold" gutterBottom>
@@ -318,7 +318,7 @@ const Home = () => {
             </Box>
           </Box>
         </Container>
-      </Box> */}
+      </Box>
 
       
     </Box>
