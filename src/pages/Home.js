@@ -232,7 +232,7 @@ const Home = () => {
 
 
       {/* Stats Section */}
-      {/* <EnhancedSections /> */}
+      <EnhancedSections />
 
       {/* Testimonials Section */}
       <Box sx={{ bgcolor: 'grey.50', py: 10 }}>
