@@ -1,5 +1,5 @@
 // pages/Home.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Container,
   Box,
@@ -52,20 +52,21 @@ const Home = () => {
       avatar: 'https://i.ibb.co.com/fb9N3db/Saif-Al-Siam.jpg',
     },
     {
-      name: 'Jahidul Hasan',
+      name: 'Jahidul Hasan',
       role: 'Property Developer',
       content: 'I\'ve worked with many construction firms, but VersaBuild stands out for their innovative solutions and commitment to excellence.',
       avatar: 'https://i.ibb.co.com/yBP2YPbF/Jahidul-Hasan.jpg',
     },
   ];
 
-  const statsData = {
+  // FIXED: Wrap statsData in useMemo to prevent recreation on every render
+  const statsData = useMemo(() => ({
     projects: 350,
     clients: 240,
     experience: 15,
-  };
+  }), []);
 
-  // Animate statistics counting up
+  // FIXED: Added statsData to dependency array
   useEffect(() => {
     const duration = 2000; // Animation duration in ms
     const steps = 60; // Number of steps
@@ -84,7 +85,7 @@ const Home = () => {
     }, interval);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [statsData]); // FIXED: Added statsData to dependency array
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);

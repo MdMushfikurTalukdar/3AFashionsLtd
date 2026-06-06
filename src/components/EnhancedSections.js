@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import {
   Box,
   Container,
@@ -59,13 +59,14 @@ const EnhancedSections = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  const statsData = {
+  // FIXED: Use useMemo to prevent recreation on every render
+  const statsData = useMemo(() => ({
     projects: 350,
     clients: 240,
     experience: 15,
-  };
+  }), []);
 
-  // FIXED: Added statsData to dependency array
+  // FIXED: Move statsData inside useEffect or use useMemo as above
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -106,7 +107,7 @@ const EnhancedSections = () => {
         observer.unobserve(currentRef);
       }
     };
-  }, [statsData]); // FIXED: Added statsData to dependency array
+  }, [statsData]); // statsData is now stable due to useMemo
 
   return (
     <>
