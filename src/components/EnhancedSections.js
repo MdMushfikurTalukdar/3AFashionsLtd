@@ -65,7 +65,7 @@ const EnhancedSections = () => {
     experience: 15,
   };
 
-  // FIXED: Added missing dependencies and fixed ref cleanup
+  // FIXED: Added statsData to dependency array
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -95,18 +95,18 @@ const EnhancedSections = () => {
       { threshold: 0.3 }
     );
 
-    const currentRef = sectionRef.current; // FIXED: Copy ref to local variable
+    const currentRef = sectionRef.current;
 
     if (currentRef) {
       observer.observe(currentRef);
     }
 
     return () => {
-      if (currentRef) { // FIXED: Use local variable in cleanup
+      if (currentRef) {
         observer.unobserve(currentRef);
       }
     };
-  }, []); // FIXED: No missing dependencies now
+  }, [statsData]); // FIXED: Added statsData to dependency array
 
   return (
     <>
