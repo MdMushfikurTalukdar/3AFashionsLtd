@@ -24,13 +24,13 @@ import {
   Email,
   LocationOn,
   Schedule,
-  Facebook,
-  Twitter,
-  Instagram,
-  LinkedIn,
+//   Facebook,
+//   Twitter,
+//   Instagram,
+//   LinkedIn,
   WhatsApp,
-  Pinterest,
-  YouTube,
+//   Pinterest,
+//   YouTube,
   CheckCircle,
   ArrowForward,
   Chat,
@@ -51,6 +51,10 @@ const floatReverse = keyframes`
   100% { transform: translateY(0px); }
 `;
 
+// const shimmer = keyframes`
+//   0% { background-position: -200% 0; }
+//   100% { background-position: 200% 0; }
+// `;
 
 const Contact = () => {
   const theme = useTheme();
@@ -58,14 +62,14 @@ const Contact = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const [isVisible, setIsVisible] = useState(false);
   const [openSuccessDialog, setOpenSuccessDialog] = useState(false);
-  const [selectedAction, setSelectedAction] = useState('');
+  //const [selectedAction, setSelectedAction] = useState('');
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const handleRequestCallback = (actionType) => {
-    setSelectedAction(actionType);
+    //setSelectedAction(actionType);
     setOpenSuccessDialog(true);
   };
 
@@ -110,15 +114,15 @@ const Contact = () => {
     },
   ];
 
-  const socialMedia = [
-    { icon: <Facebook sx={{ fontSize: 24 }} />, color: '#1877F2', name: 'Facebook', url: 'https://facebook.com', bgHover: '#1877F2' },
-    { icon: <Twitter sx={{ fontSize: 24 }} />, color: '#1DA1F2', name: 'Twitter', url: 'https://twitter.com', bgHover: '#1DA1F2' },
-    { icon: <Instagram sx={{ fontSize: 24 }} />, color: '#E4405F', name: 'Instagram', url: 'https://instagram.com', bgHover: '#E4405F' },
-    { icon: <LinkedIn sx={{ fontSize: 24 }} />, color: '#0A66C2', name: 'LinkedIn', url: 'https://linkedin.com', bgHover: '#0A66C2' },
-    { icon: <Pinterest sx={{ fontSize: 24 }} />, color: '#BD081C', name: 'Pinterest', url: 'https://pinterest.com', bgHover: '#BD081C' },
-    { icon: <YouTube sx={{ fontSize: 24 }} />, color: '#FF0000', name: 'YouTube', url: 'https://youtube.com', bgHover: '#FF0000' },
-    { icon: <WhatsApp sx={{ fontSize: 24 }} />, color: '#25D366', name: 'WhatsApp', url: 'https://wa.me/8801673820951', bgHover: '#25D366' },
-  ];
+//   const socialMedia = [
+//     { icon: <Facebook sx={{ fontSize: 24 }} />, color: '#1877F2', name: 'Facebook', url: 'https://facebook.com', bgHover: '#1877F2' },
+//     { icon: <Twitter sx={{ fontSize: 24 }} />, color: '#1DA1F2', name: 'Twitter', url: 'https://twitter.com', bgHover: '#1DA1F2' },
+//     { icon: <Instagram sx={{ fontSize: 24 }} />, color: '#E4405F', name: 'Instagram', url: 'https://instagram.com', bgHover: '#E4405F' },
+//     { icon: <LinkedIn sx={{ fontSize: 24 }} />, color: '#0A66C2', name: 'LinkedIn', url: 'https://linkedin.com', bgHover: '#0A66C2' },
+//     { icon: <Pinterest sx={{ fontSize: 24 }} />, color: '#BD081C', name: 'Pinterest', url: 'https://pinterest.com', bgHover: '#BD081C' },
+//     { icon: <YouTube sx={{ fontSize: 24 }} />, color: '#FF0000', name: 'YouTube', url: 'https://youtube.com', bgHover: '#FF0000' },
+//     { icon: <WhatsApp sx={{ fontSize: 24 }} />, color: '#25D366', name: 'WhatsApp', url: 'https://wa.me/8801673820951', bgHover: '#25D366' },
+//   ];
 
   const quickActions = [
     {
@@ -200,7 +204,6 @@ const Contact = () => {
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
-                  textShadow: 'none'
                 }}
               >
                 Let's Build Together
