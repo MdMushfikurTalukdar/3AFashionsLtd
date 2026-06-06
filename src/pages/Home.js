@@ -23,7 +23,7 @@ import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
 import { keyframes } from '@emotion/react';
 import ServicesSection from '../components/ServicesSection';
-// import EnhancedSections from '../components/EnhancedSections';
+import EnhancedSections from '../components/EnhancedSections';
 
 // Keyframe animation for floating effect
 const float = keyframes`
