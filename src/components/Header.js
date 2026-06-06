@@ -26,7 +26,7 @@ import {
   Home as HomeIcon,
   Info as InfoIcon,
   Construction as ConstructionIcon,
-  PhotoLibrary as ProjectsIcon,
+  // PhotoLibrary as ProjectsIcon,
   ContactMail as ContactIcon,
 } from '@mui/icons-material';
 
@@ -108,7 +108,7 @@ const Header = () => {
     { text: 'Home', path: '/', icon: <HomeIcon /> },
     { text: 'About', path: '/about', icon: <InfoIcon /> },
     { text: 'Services', path: '/services', icon: <ConstructionIcon /> },
-    { text: 'Projects', path: '/projects', icon: <ProjectsIcon /> },
+    // { text: 'Projects', path: '/projects', icon: <ProjectsIcon /> },
     { text: 'Contact', path: '/contact', icon: <ContactIcon /> },
   ];
 
@@ -148,14 +148,14 @@ const Header = () => {
               borderRadius: '50%',
               objectFit: 'cover'
             }}
-            alt="VersaBuild BD Logo"
+            alt="3A Fashions Ltd"
             onError={(e) => {
               e.target.src = "https://i.ibb.co.com/h1LQb53w/logo-removebg-preview.png";
               // e.target.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXZuMThidHRyMjl6djMzbnhkcGdvOGxlOXp1YjhrY3dzYnp4NGExayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LHZyixOnHwDDy/giphy.gif";
             }}
           />
           <LogoText variant="h6">
-            VersaBuild BD
+            3A Fashions Ltd
           </LogoText>
         </Box>
         <IconButton onClick={handleDrawerToggle} sx={{ color: 'white' }}>
@@ -225,13 +225,13 @@ const Header = () => {
                     objectFit: 'cover',
                     display: { xs: 'none', sm: 'flex' }
                   }}
-                  alt="VersaBuild BD Logo"
+                  alt="3A Fashions Ltd"
                   onError={(e) => {
                     e.target.src = "https://i.ibb.co.com/h1LQb53w/logo-removebg-preview.png";
                   }}
                 />
                 <LogoText variant="h6" noWrap>
-                  VersaBuild BD
+                  3A Fashions Ltd
                 </LogoText>
               </Box>
 
