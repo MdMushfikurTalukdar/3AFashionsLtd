@@ -1,5 +1,5 @@
 // components/Accreditation.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
   Box,
   Container,

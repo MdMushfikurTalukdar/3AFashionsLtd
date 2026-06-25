@@ -17,7 +17,6 @@ import {
   Fade,
   Zoom,
   Stack,
-  LinearProgress,
   Tooltip,
   Paper,
 } from '@mui/material';
@@ -31,21 +30,11 @@ import {
   BookmarkBorder,
   Bookmark,
   ArrowForward,
-  Email,
-  Phone,
   Apartment,
-  Bathtub,
-  SquareFoot,
-  AccessTime,
   Verified,
   CalendarToday,
   Build,
   MeetingRoom,
-  Elevator,
-  LocalParking,
-  Security,
-  Wifi,
-  Coffee,
 } from '@mui/icons-material';
 import { styled, keyframes } from '@mui/material/styles';
 

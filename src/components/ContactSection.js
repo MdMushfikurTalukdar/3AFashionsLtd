@@ -4,13 +4,11 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   TextField,
   Button,
   Paper,
   Snackbar,
   Alert,
-  IconButton,
   InputAdornment,
   Fade,
   CircularProgress,
@@ -30,11 +28,7 @@ const floatAnimation = keyframes`
   100% { transform: translateY(0px); }
 `;
 
-const pulseAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-`;
+
 
 const shimmerAnimation = keyframes`
   0% { background-position: -200% center; }

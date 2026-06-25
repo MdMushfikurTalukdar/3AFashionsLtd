@@ -1,51 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import {
   Container,
   Typography,
   Box,
   Grid,
-  Card,
-  CardContent,
   Button,
   Chip,
   Paper,
-  Avatar,
-  IconButton,
   Fade,
-  Zoom,
-  useMediaQuery,
-  useTheme,
   Divider,
-  LinearProgress,
-  Tooltip,
-  AvatarGroup,
 } from '@mui/material';
 import {
-  Factory,
-  People,
-  TrendingUp,
-  Security,
-  CheckCircle,
-  ArrowForward,
-  PlayArrow,
-  Pause,
-  EmojiEvents,
-  Business,
-  LocationOn,
-  CalendarToday,
-  LinkedIn,
-  Facebook,
-  Twitter,
-  Instagram,
-  Star,
-  StarBorder,
-  FormatQuote,
-  Verified,
-  Speed,
   Shield,
   ThumbUp,
-  WorkspacePremium,
+  ArrowForward,
+  Speed,
+  WorkspacePremium
 } from '@mui/icons-material';
 import { keyframes } from '@mui/system';
 
@@ -62,29 +33,8 @@ const pulse = keyframes`
   100% { transform: scale(1); opacity: 0.8; }
 `;
 
-const shimmer = keyframes`
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-`;
-
-const slideUp = keyframes`
-  0% { transform: translateY(50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-`;
-
-const rotate = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
 
 const AboutSection = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [activeTab, setActiveTab] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
-
 
   const coreValues = [
     { 
@@ -113,26 +63,7 @@ const AboutSection = () => {
     },
   ];
 
-  const achievements = [
-    { year: '1992', title: 'Founded', description: 'Started journey in garment manufacturing' },
-    { year: '2000', title: 'Expansion', description: 'Opened second production facility' },
-    { year: '2010', title: 'Innovation', description: 'Introduced modern machinery' },
-    { year: '2020', title: 'Sustainability', description: 'Adopted eco-friendly practices' },
-  ];
-
-  const teamMembers = [
-    { name: 'Mr. Rahman', role: 'CEO', image: '' },
-    { name: 'Ms. Akter', role: 'Head of Production', image: '' },
-    { name: 'Mr. Khan', role: 'Quality Manager', image: '' },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  
 
   return (
     <Box id="aboutSection" sx={{ overflow: 'hidden' }}>

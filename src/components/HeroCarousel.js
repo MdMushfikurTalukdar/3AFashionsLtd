@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -8,52 +8,30 @@ import {
   Fade,
   useMediaQuery,
   useTheme,
-  IconButton,
   Paper,
-  Chip,
 } from '@mui/material';
 import {
   CheckCircle,
   Phone,
   Email,
   LocationOn,
-  ArrowForward,
-  ArrowBack,
-  PlayArrow,
-  Pause,
-  Build,
   EmojiEvents,
   TrendingUp,
+  Build,
 } from '@mui/icons-material';
 import { keyframes } from '@mui/system';
 
-// Animation keyframes
 const float = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 `;
 
-const pulse = keyframes`
-  0% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.7; }
-`;
-
-const shimmer = keyframes`
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-`;
-
 const HeroCarousel = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [direction, setDirection] = useState('right');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef(null);
 
   const carouselData = [
     {
@@ -61,9 +39,9 @@ const HeroCarousel = () => {
       title: "Let's Do Business Together",
       subtitle: 'Our promise is to keep strong commitments, best quality and building good relationships.',
       features: [
-        { icon: <CheckCircle color="secondary" />, text: '30+ Years of Experience' },
-        { icon: <CheckCircle color="secondary" />, text: 'Best Quality Products' },
-        { icon: <CheckCircle color="secondary" />, text: 'Maintain Consistency' },
+        { icon: <CheckCircle />, text: '30+ Years of Experience' },
+        { icon: <CheckCircle />, text: 'Best Quality Products' },
+        { icon: <CheckCircle />, text: 'Maintain Consistency' },
       ],
       stats: [
         { value: '30+', label: 'Years Experience', icon: <EmojiEvents /> },
@@ -80,9 +58,9 @@ const HeroCarousel = () => {
       title: 'Quality Garment Manufacturing',
       subtitle: 'Delivering excellence in every stitch with our state-of-the-art facilities.',
       features: [
-        { icon: <CheckCircle color="secondary" />, text: 'Modern Machinery' },
-        { icon: <CheckCircle color="secondary" />, text: 'Skilled Workforce' },
-        { icon: <CheckCircle color="secondary" />, text: 'Quality Assurance' },
+        { icon: <CheckCircle />, text: 'Modern Machinery' },
+        { icon: <CheckCircle />, text: 'Skilled Workforce' },
+        { icon: <CheckCircle />, text: 'Quality Assurance' },
       ],
       stats: [
         { value: '50+', label: 'Machines', icon: <Build /> },
@@ -99,9 +77,9 @@ const HeroCarousel = () => {
       title: 'Sustainable Fashion Future',
       subtitle: 'Committed to eco-friendly practices and sustainable manufacturing for a better tomorrow.',
       features: [
-        { icon: <CheckCircle color="secondary" />, text: 'Eco-Friendly Practices' },
-        { icon: <CheckCircle color="secondary" />, text: 'Waste Management' },
-        { icon: <CheckCircle color="secondary" />, text: 'Energy Efficiency' },
+        { icon: <CheckCircle />, text: 'Eco-Friendly Practices' },
+        { icon: <CheckCircle />, text: 'Waste Management' },
+        { icon: <CheckCircle />, text: 'Energy Efficiency' },
       ],
       stats: [
         { value: '85%', label: 'Less Waste', icon: <TrendingUp /> },
@@ -118,43 +96,16 @@ const HeroCarousel = () => {
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
-        setDirection('right');
         setCurrentSlide((prev) => (prev + 1) % carouselData.length);
       }, 5000);
       return () => clearInterval(interval);
     }
   }, [isPaused, carouselData.length]);
 
-  const goToSlide = (index) => {
-    setDirection(index > currentSlide ? 'right' : 'left');
-    setCurrentSlide(index);
-  };
-
-  const nextSlide = () => {
-    setDirection('right');
-    setCurrentSlide((prev) => (prev + 1) % carouselData.length);
-  };
-
-  const prevSlide = () => {
-    setDirection('left');
-    setCurrentSlide((prev) => (prev - 1 + carouselData.length) % carouselData.length);
-  };
-
-  const handleMouseMove = (e) => {
-    if (heroRef.current) {
-      const rect = heroRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-      setMousePosition({ x, y });
-    }
-  };
-
   const currentData = carouselData[currentSlide];
 
   return (
     <Box
-      ref={heroRef}
-      onMouseMove={handleMouseMove}
       sx={{
         position: 'relative',
         height: { xs: '100vh', md: '95vh' },
@@ -163,10 +114,9 @@ const HeroCarousel = () => {
         display: 'flex',
         alignItems: 'center',
         backgroundColor: '#0a2b4a',
-        perspective: '1000px',
       }}
     >
-      {/* Background Image with Parallax Effect */}
+      {/* Background */}
       <Box
         sx={{
           position: 'absolute',
@@ -177,8 +127,7 @@ const HeroCarousel = () => {
           backgroundImage: `url(${currentData.image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          transform: `scale(1.1) translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
-          transition: 'transform 0.1s ease-out, background-image 0.8s ease-in-out',
+          transition: 'background-image 0.8s ease-in-out',
           '&::after': {
             content: '""',
             position: 'absolute',
@@ -191,39 +140,10 @@ const HeroCarousel = () => {
         }}
       />
 
-      {/* Animated Background Shapes */}
-      <Box
-        sx={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          zIndex: 1,
-        }}
-      >
-        {[...Array(5)].map((_, i) => (
-          <Box
-            key={i}
-            sx={{
-              position: 'absolute',
-              borderRadius: '50%',
-              background: `rgba(255, 107, 53, ${0.03 + i * 0.01})`,
-              width: `${100 + i * 80}px`,
-              height: `${100 + i * 80}px`,
-              top: `${10 + i * 15}%`,
-              right: `${-20 + i * 5}%`,
-              animation: `${float} ${6 + i * 2}s ease-in-out infinite`,
-              animationDelay: `${i * 0.5}s`,
-            }}
-          />
-        ))}
-      </Box>
-
       {/* Content */}
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
         <Fade in={true} timeout={1000}>
-          <Box sx={{ color: 'white' }}>
-
+          <Box sx={{ color: 'white', textAlign: 'center' }}>
             <Typography
               variant="h2"
               component="h1"
@@ -233,12 +153,6 @@ const HeroCarousel = () => {
                 fontSize: { xs: '2rem', sm: '2.8rem', md: '4rem' },
                 mb: 2,
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                animation: `${shimmer} 8s linear infinite`,
-                background: `linear-gradient(90deg, #ffffff 0%, #ff6b35 50%, #ffffff 100%)`,
-                backgroundSize: '200% auto',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
                 lineHeight: 1.2,
               }}
             >
@@ -260,7 +174,7 @@ const HeroCarousel = () => {
               {currentData.subtitle}
             </Typography>
 
-            {/* Features Grid with Animation */}
+            {/* Features */}
             <Grid container spacing={2} justifyContent="center" sx={{ mb: 4 }}>
               {currentData.features.map((item, index) => (
                 <Grid item xs={12} sm={4} key={index}>
@@ -276,14 +190,8 @@ const HeroCarousel = () => {
                       backdropFilter: 'blur(10px)',
                       borderRadius: '12px',
                       border: '1px solid rgba(255,255,255,0.1)',
-                      transition: 'all 0.3s ease',
                       animation: `${float} ${3 + index}s ease-in-out infinite`,
                       animationDelay: `${index * 0.3}s`,
-                      '&:hover': {
-                        backgroundColor: 'rgba(255,255,255,0.15)',
-                        transform: 'translateY(-5px) scale(1.02)',
-                        boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
-                      },
                     }}
                   >
                     {React.cloneElement(item.icon, { sx: { fontSize: 24, color: '#ff6b35' } })}
@@ -295,17 +203,10 @@ const HeroCarousel = () => {
               ))}
             </Grid>
 
-            {/* Statistics Section */}
+            {/* Stats */}
             <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center', gap: 4, flexWrap: 'wrap' }}>
               {currentData.stats.map((stat, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    textAlign: 'center',
-                    animation: `${pulse} 3s ease-in-out infinite`,
-                    animationDelay: `${index * 0.5}s`,
-                  }}
-                >
+                <Box key={index} sx={{ textAlign: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
                     {React.cloneElement(stat.icon, { sx: { color: '#ff6b35', fontSize: 28 } })}
                     <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#ff6b35' }}>
@@ -332,9 +233,8 @@ const HeroCarousel = () => {
                   borderRadius: '50px',
                   fontWeight: 'bold',
                   boxShadow: '0 8px 25px rgba(255,107,53,0.4)',
-                  transition: 'all 0.3s ease',
                   '&:hover': {
-                    transform: 'translateY(-3px) scale(1.02)',
+                    transform: 'translateY(-3px)',
                     boxShadow: '0 12px 35px rgba(255,107,53,0.6)',
                   },
                 }}
@@ -353,10 +253,9 @@ const HeroCarousel = () => {
                   fontWeight: 'bold',
                   borderColor: 'rgba(255,255,255,0.3)',
                   backdropFilter: 'blur(10px)',
-                  transition: 'all 0.3s ease',
                   '&:hover': {
                     backgroundColor: 'rgba(255,255,255,0.1)',
-                    transform: 'translateY(-3px) scale(1.02)',
+                    transform: 'translateY(-3px)',
                     borderColor: '#ff6b35',
                   },
                 }}
@@ -379,7 +278,6 @@ const HeroCarousel = () => {
               <LocationOn sx={{ color: '#ff6b35' }} />
               {currentData.address}
             </Typography>
-
           </Box>
         </Fade>
       </Container>

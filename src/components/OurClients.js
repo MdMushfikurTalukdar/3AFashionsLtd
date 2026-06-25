@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
@@ -90,7 +90,6 @@ const LogoWrapper = styled(Paper)(({ theme }) => ({
 const LogoText = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
   fontSize: '1.8rem',
-  color: '#1a1a2e',
   letterSpacing: '1px',
   background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
   backgroundClip: 'text',
@@ -183,7 +182,6 @@ const OurClients = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const scrollRef = useRef(null);
 
   // Duplicate clients for seamless scrolling
   const duplicateClients = [...clients, ...clients, ...clients];
