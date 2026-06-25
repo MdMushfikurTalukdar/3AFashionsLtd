@@ -1,5 +1,5 @@
 // components/Accreditation.jsx
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
@@ -232,7 +232,6 @@ const Accreditation = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const scrollRef = useRef(null);
 
   // Duplicate accreditations for seamless scrolling
   const duplicateAccreditations = [...accreditations, ...accreditations, ...accreditations];
