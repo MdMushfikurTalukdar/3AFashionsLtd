@@ -26,7 +26,7 @@ const CorporateViewpoint = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [backgroundImages.length]);
 
   // Team members data with real avatar images
   const teamMembers = [

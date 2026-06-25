@@ -1,5 +1,5 @@
 // components/ApparelProducts.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Box } from '@mui/material';
 
 const ApparelProducts = () => {
@@ -85,7 +85,24 @@ const ApparelProducts = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto-scroll functionality
+  // ✅ FIXED: Wrap handleNext and handlePrev in useCallback to stabilize references
+  const handleNext = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection('next');
+    setCurrentIndex((prev) => (prev + 1) % totalItems);
+    setTimeout(() => setIsTransitioning(false), 600);
+  }, [isTransitioning, totalItems]);
+
+  const handlePrev = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection('prev');
+    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+    setTimeout(() => setIsTransitioning(false), 600);
+  }, [isTransitioning, totalItems]);
+
+  // ✅ FIXED: Added handleNext to dependency array
   useEffect(() => {
     if (isAutoPlaying) {
       intervalRef.current = setInterval(() => {
@@ -101,23 +118,7 @@ const ApparelProducts = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isAutoPlaying, currentIndex]);
-
-  const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setDirection('next');
-    setCurrentIndex((prev) => (prev + 1) % totalItems);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const handlePrev = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setDirection('prev');
-    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
+  }, [isAutoPlaying, handleNext]); // ✅ Added handleNext dependency
 
   const handleProductClick = (product) => {
     window.open(product.link, '_blank');
@@ -144,7 +145,6 @@ const ApparelProducts = () => {
 
   const visibleProducts = getVisibleProducts();
 
-  // ✅ FIXED: Added proper return statement and removed the Box that was breaking the code
   return (
     <Box id="product" sx={{ overflow: 'hidden' }}>
       <div style={{

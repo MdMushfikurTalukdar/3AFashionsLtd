@@ -296,8 +296,7 @@ const buildingData = [
 const BuildingsAndOccupants = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  // ✅ Removed unused 'isTablet' and 'isDesktop' variables
   const [bookmarked, setBookmarked] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
 
