@@ -1,28 +1,23 @@
-// App.js
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-// import Projects from './pages/Projects';
-import Contact from './pages/Contact';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: '#0a2b4a',
     },
     secondary: {
-      main: '#dc004e',
+      main: '#ff6b35',
     },
     background: {
-      default: '#f5f5f5',
+      default: '#f5f7fa',
     },
   },
   typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontWeight: 700,
     },
@@ -32,6 +27,28 @@ const theme = createTheme({
     h3: {
       fontWeight: 600,
     },
+    h4: {
+      fontWeight: 600,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: 'none',
+          fontWeight: 600,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        },
+      },
+    },
   },
 });
 
@@ -39,17 +56,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          {/* <Route path="/projects" element={<Projects />} /> */}
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <Header />
+      <Home />
+      <Footer />
     </ThemeProvider>
   );
 }

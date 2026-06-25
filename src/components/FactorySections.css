@@ -1,0 +1,93 @@
+/* FactorySections.css */
+.factory-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.factory-header h1 {
+  color: #1a3a4a;
+  font-weight: 500;
+  border-bottom: 2px solid #e0e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-card {
+  background: #f8faff;
+  border: 2px solid #e2eaf2;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 20, 40, 0.08);
+}
+
+.section-card.active {
+  background: #ffffff;
+  border-color: #2a6f97;
+  box-shadow: 0 12px 30px rgba(42, 111, 151, 0.15);
+  transform: scale(1.02);
+}
+
+.section-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-label {
+  font-size: 1.1rem;
+  color: #1a3a4a;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.active-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #2a6f97;
+  background: #e1eef9;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+  margin-top: 0.3rem;
+}
+
+.active-detail {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid #e2eaf2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.active-detail h3 {
+  color: #4a6a7a;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.active-detail p {
+  color: #1a3a4a;
+  font-size: 1.3rem;
+  font-weight: 600;
+}

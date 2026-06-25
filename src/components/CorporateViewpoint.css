@@ -1,0 +1,538 @@
+/* CorporateViewpoint.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.corporate-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef3f8 100%);
+  min-height: 100vh;
+}
+
+/* Header */
+.corporate-header {
+  background: linear-gradient(135deg, #0b2b3f 0%, #1a4b6d 100%);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  margin-bottom: 2.5rem;
+  color: white;
+  box-shadow: 0 20px 40px rgba(11, 43, 63, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.corporate-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.corporate-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.corporate-header .subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.header-badges {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Company Overview */
+.company-overview {
+  margin-bottom: 3rem;
+}
+
+.overview-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-left: 6px solid #1a4b6d;
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.overview-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.overview-content {
+  line-height: 1.9;
+  color: #1a3a4a;
+  font-size: 1.05rem;
+}
+
+.overview-content p {
+  margin-bottom: 1rem;
+}
+
+.overview-content strong {
+  color: #1a4b6d;
+}
+
+/* Team Section */
+.team-section {
+  margin-bottom: 3rem;
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.team-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0b2b3f;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.team-subtitle {
+  color: #3b6e8f;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f0f7fe 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  border-color: #e0eaf3;
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
+
+.team-card.active {
+  border-color: #1a4b6d;
+  background: linear-gradient(135deg, #f0f7fe 0%, #ffffff 100%);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(26, 75, 109, 0.15);
+}
+
+.team-card.active::before {
+  opacity: 1;
+}
+
+.member-avatar {
+  font-size: 4rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.member-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0b2b3f;
+  margin-bottom: 0.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.member-role {
+  font-size: 0.85rem;
+  color: #3b6e8f;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.member-bio {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e0eaf3;
+  animation: slideDown 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.member-bio p {
+  font-size: 0.9rem;
+  color: #1a3a4a;
+  line-height: 1.5;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chairman Section */
+.chairman-section {
+  margin-bottom: 2.5rem;
+}
+
+.chairman-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8f0f8;
+  transition: transform 0.3s ease;
+}
+
+.chairman-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.chairman-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chairman-icon {
+  font-size: 2.8rem;
+}
+
+.chairman-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0b2b3f;
+}
+
+.chairman-message blockquote {
+  background: linear-gradient(135deg, #f0f7fe 0%, #f8fafc 100%);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  border-left: 4px solid #1a4b6d;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #1a4b6d;
+}
+
+.chairman-message p {
+  line-height: 1.9;
+  color: #1a3a4a;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.chairman-message strong {
+  color: #1a4b6d;
+}
+
+.chairman-signature {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.signature-line {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #1a4b6d, #3b6e8f);
+  margin-left: auto;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+.signature-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0b2b3f;
+}
+
+.signature-title {
+  font-size: 1rem;
+  color: #3b6e8f;
+}
+
+/* Footer Stats */
+.corporate-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8f0f8;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a4b6d;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #3b6e8f;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .corporate-container {
+    padding: 1.5rem;
+  }
+  
+  .corporate-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .corporate-container {
+    padding: 1rem;
+  }
+
+  .corporate-header {
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .corporate-header h1 {
+    font-size: 2rem;
+  }
+
+  .corporate-header .subtitle {
+    font-size: 1rem;
+  }
+
+  .overview-card {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+
+  .overview-icon {
+    font-size: 2.5rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .team-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .member-avatar {
+    font-size: 3rem;
+  }
+
+  .chairman-card {
+    padding: 1.5rem;
+  }
+
+  .chairman-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .chairman-message blockquote {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .corporate-footer {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .corporate-container {
+    padding: 0.5rem;
+  }
+
+  .corporate-header {
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .corporate-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-badges {
+    gap: 0.5rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .team-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .member-avatar {
+    font-size: 2.5rem;
+  }
+
+  .member-name {
+    font-size: 0.9rem;
+  }
+
+  .member-role {
+    font-size: 0.75rem;
+  }
+
+  .overview-card {
+    padding: 1rem;
+  }
+
+  .overview-content {
+    font-size: 0.95rem;
+  }
+
+  .chairman-card {
+    padding: 1rem;
+  }
+
+  .chairman-message p {
+    font-size: 0.95rem;
+  }
+
+  .chairman-signature {
+    text-align: center;
+  }
+
+  .signature-line {
+    margin: 0 auto 0.5rem;
+  }
+
+  .corporate-footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #3b6e8f;
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 1rem;
+  border: 1px solid #ffcdd2;
+}

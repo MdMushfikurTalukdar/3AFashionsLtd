@@ -1,304 +1,180 @@
-// pages/About.js
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Container,
-  Box,
   Typography,
+  Box,
   Grid,
   Paper,
-  alpha,
-  useTheme,
-  Fade,
-  Slide,
-  Grow,
-  Zoom,
+  Card,
+  CardContent,
+  Avatar,
   Chip,
-  IconButton
+  Divider,
 } from '@mui/material';
 import {
-  EmojiEvents,
-  Group,
-  Schedule,
-  Star,
-  PlayArrow,
+  Factory,
+  People,
+  TrendingUp,
+  Security,
+  Assignment,
+  Build,
+  CheckCircle,
 } from '@mui/icons-material';
-import { keyframes } from '@emotion/react';
-import ValuesSection from '../components/ValuesSection';
-import LeadershipTeam from '../components/LeadershipTeam';
-
-// Animation for floating elements
-const float = keyframes`
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-`;
-
-// Animation for gradient background
-const gradient = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`;
 
 const About = () => {
-  const theme = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-
   const stats = [
-    { number: '250+', label: 'Projects Completed', icon: <EmojiEvents /> },
-    { number: '15+', label: 'Years Experience', icon: <Schedule /> },
-    { number: '50+', label: 'Team Members', icon: <Group /> },
-    { number: '100%', label: 'Client Satisfaction', icon: <Star /> },
+    { icon: <Factory fontSize="large" />, number: '32+', label: 'Years of Experience' },
+    { icon: <People fontSize="large" />, number: '500+', label: 'Team Members' },
+    { icon: <TrendingUp fontSize="large" />, number: '50+', label: 'Export Countries' },
+    { icon: <Security fontSize="large" />, number: '100%', label: 'Quality Assurance' },
+  ];
+
+  const values = [
+    'Quality First',
+    'Customer Satisfaction',
+    'Innovation',
+    'Sustainability',
+    'Integrity',
+    'Teamwork',
   ];
 
   return (
-    <Box sx={{ overflow: 'hidden' }}>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          pt: 15,
-          pb: 10,
-          background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.1)} 0%, ${alpha(theme.palette.secondary.main, 0.1)} 100%)`,
-          position: 'relative',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: `radial-gradient(${alpha(theme.palette.primary.main, 0.2)} 1px, transparent 1px)`,
-            backgroundSize: '20px 20px',
-            opacity: 0.3,
-            zIndex: 0,
-          }
-        }}
-      >
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Fade in={isVisible} timeout={1000}>
-            <Box sx={{ textAlign: 'center', maxWidth: 800, mx: 'auto' }}>
-              <Chip 
-                label="ABOUT OUR COMPANY" 
-                color="primary" 
-                variant="outlined"
-                sx={{ 
-                  mb: 3, 
-                  px: 2, 
-                  py: 1,
-                  fontWeight: 'bold',
-                  background: alpha(theme.palette.primary.main, 0.1)
-                }} 
-              />
-              <Typography
-                variant="h1"
-                fontWeight="bold"
-                gutterBottom
-                sx={{
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
-                  background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                  backgroundClip: 'text',
-                  textFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                Building Dreams Into Reality
+    <Box>
+      {/* Hero */}
+      <Box sx={{ backgroundColor: '#0a2b4a', color: 'white', py: 6 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h3" fontWeight="bold" gutterBottom>
+            About Us
+          </Typography>
+          <Typography variant="h6" sx={{ opacity: 0.9 }}>
+            Learn more about our journey and commitment to excellence
+          </Typography>
+        </Container>
+      </Box>
+
+      <Container maxWidth="lg" sx={{ py: 6 }}>
+        {/* Corporate Viewpoint */}
+        <Paper elevation={2} sx={{ p: 4, mb: 6 }}>
+          <Typography variant="h4" gutterBottom fontWeight="bold" color="#0a2b4a">
+            Corporate Viewpoint
+          </Typography>
+          <Typography variant="body1" paragraph>
+            W. Apparels Ltd. is among one of the most successful garment manufacturers in Bangladesh,
+            a country with great potential in the field of garment manufacturing. It started its
+            journey in the year 1992. W. Apparels Ltd. has passed over 32 successful years of
+            accomplishment, aiming to lead the competitive knit/Woven/Non-Woven wear-organization of
+            Bangladesh.
+          </Typography>
+          <Typography variant="body1" paragraph>
+            It has already recognized each step of its value-chain to match the dynamism of the
+            fashion market. W. Apparels Ltd. has expanded its capacity, developed a skilled workforce
+            and introduced integrated technologies, to remain globally up-to-date. It is truly an
+            organization with a glorious past and a bright future.
+          </Typography>
+        </Paper>
+
+        {/* Message from Chairman */}
+        <Paper elevation={2} sx={{ p: 4, mb: 6, backgroundColor: '#e3f2fd' }}>
+          <Typography variant="h4" gutterBottom fontWeight="bold" color="#0a2b4a">
+            Message from the Chairman
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Starting as W. Apparels Ltd. in 1992 and further expanding into W. Apparels Ltd. in 2019,
+            we are a garments industry company maintaining a consistent contribution in readymade
+            garments export. Our team comprises of well experienced promoters, quality control agents,
+            machinists, commercial supervisors and production operators.
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Our goals are to maintain better foreign relations and establish a research intensive
+            environment for garments products, maintaining consistent customer satisfaction and using
+            updated machinery. Under the alliance of Bangladesh Garments Manufacturers and Exporters
+            Association (BGMEA), we envision a sustainable future of RMG products using technology
+            and a smooth international market.
+          </Typography>
+          <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Avatar sx={{ width: 56, height: 56, bgcolor: '#0a2b4a' }}>
+              <People />
+            </Avatar>
+            <Box>
+              <Typography variant="h6" fontWeight="bold">
+                Chairman
               </Typography>
-              <Typography 
-                variant="h6" 
-                color="text.secondary" 
-                sx={{ 
-                  maxWidth: 600, 
-                  mx: 'auto', 
-                  mt: 3,
-                  fontSize: { xs: '1rem', md: '1.25rem' }
-                }}
-              >
-                For over 15 years, VersaBuild Construction has been transforming visions into exceptional spaces that stand the test of time.
+              <Typography variant="body2" color="textSecondary">
+                W. Apparels Ltd.
               </Typography>
             </Box>
-          </Fade>
-        </Container>
-      </Box>
+          </Box>
+        </Paper>
 
-      {/* Story Section */}
-      <Container maxWidth="lg" sx={{ py: 10 }}>
-        <Grid container spacing={6} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Slide direction="left" in={isVisible} timeout={800}>
-              <Box>
-                <Typography 
-                  variant="h3" 
-                  fontWeight="bold" 
-                  gutterBottom
-                  sx={{
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: -10,
-                      left: 0,
-                      width: 60,
-                      height: 4,
-                      bgcolor: theme.palette.primary.main,
-                      borderRadius: 2
-                    }
-                  }}
-                >
-                  Our Story
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ mt: 3, fontSize: '1.1rem', lineHeight: 1.7 }}>
-                  VersaBuild Construction was founded in 2024 with a simple mission: to deliver 
-                  exceptional construction services with uncompromising quality and integrity. What 
-                  started as a small local contractor has grown into a respected full-service 
-                  construction company serving clients across the region.
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
-                  Throughout our journey, we've remained committed to our core values of quality, 
-                  reliability, and customer satisfaction. Every project we undertake is approached 
-                  with the same dedication to excellence that has defined our company from the beginning.
-                </Typography>
-                
-                <Box sx={{ display: 'flex', gap: 2, mt: 4, flexWrap: 'wrap' }}>
-                  <Chip icon={<EmojiEvents />} label="Award Winning" variant="outlined" />
-                  <Chip icon={<Group />} label="Professional Team" variant="outlined" />
-                  <Chip icon={<Star />} label="5-Star Rated" variant="outlined" />
-                </Box>
-              </Box>
-            </Slide>
-          </Grid>
-          
-          <Grid item xs={12} md={6}>
-            <Zoom in={isVisible} timeout={1000}>
-              <Box sx={{ position: 'relative' }}>
-                <Box
-                  component="img"
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                  alt="Construction site"
-                  sx={{
-                    width: '100%',
-                    borderRadius: 4,
-                    boxShadow: `0 20px 40px ${alpha(theme.palette.common.black, 0.15)}`,
-                  }}
-                />
-                <Paper 
-                  elevation={8} 
-                  sx={{ 
-                    position: 'absolute', 
-                    bottom: -20, 
-                    right: -20, 
-                    p: 3, 
-                    borderRadius: 3,
-                    background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                    color: 'white',
-                    animation: `${float} 6s ease-in-out infinite`,
-                    display: { xs: 'none', md: 'block' }
-                  }}
-                >
-                  <Typography variant="h4" fontWeight="bold">
-                    15+
+        {/* Stats */}
+        <Typography variant="h4" gutterBottom fontWeight="bold" color="#0a2b4a" align="center">
+          Our Impact
+        </Typography>
+        <Grid container spacing={3} sx={{ mb: 6 }}>
+          {stats.map((stat, index) => (
+            <Grid item xs={6} md={3} key={index}>
+              <Card sx={{ textAlign: 'center', py: 3, height: '100%' }}>
+                <CardContent>
+                  <Box sx={{ color: '#0a2b4a', mb: 1 }}>{stat.icon}</Box>
+                  <Typography variant="h4" fontWeight="bold" color="#0a2b4a">
+                    {stat.number}
                   </Typography>
-                  <Typography variant="body2">
-                    Years of Excellence
+                  <Typography variant="body2" color="textSecondary">
+                    {stat.label}
                   </Typography>
-                </Paper>
-                
-                {/* Play button overlay */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                >
-                  <IconButton
-                    sx={{
-                      bgcolor: alpha(theme.palette.common.white, 0.9),
-                      width: 80,
-                      height: 80,
-                      '&:hover': {
-                        bgcolor: theme.palette.common.white,
-                      }
-                    }}
-                  >
-                    <PlayArrow sx={{ fontSize: 40, color: theme.palette.primary.main }} />
-                  </IconButton>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Values */}
+        <Typography variant="h4" gutterBottom fontWeight="bold" color="#0a2b4a" align="center">
+          Our Values
+        </Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, mb: 4 }}>
+          {values.map((value, index) => (
+            <Chip
+              key={index}
+              icon={<CheckCircle />}
+              label={value}
+              color="primary"
+              sx={{ fontSize: '1rem', py: 2, px: 1 }}
+            />
+          ))}
+        </Box>
+
+        <Divider sx={{ my: 4 }} />
+
+        {/* Factory Components Details */}
+        <Typography variant="h4" gutterBottom fontWeight="bold" color="#0a2b4a" align="center">
+          Our Factory Components
+        </Typography>
+        <Grid container spacing={3}>
+          {[
+            { icon: <Assignment />, title: 'Fabric Inspection', desc: 'Quality control of incoming materials' },
+            { icon: <Build />, title: 'Sewing', desc: 'Precision stitching and assembly' },
+            { icon: <TrendingUp />, title: 'Cutting', desc: 'Accurate fabric cutting' },
+            { icon: <Security />, title: 'Quality Assurance', desc: 'Rigorous quality checks' },
+            { icon: <Factory />, title: 'Sustainability', desc: 'Eco-friendly practices' },
+            { icon: <Assignment />, title: 'Packaging', desc: 'Secure product packaging' },
+          ].map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Paper sx={{ p: 3, height: '100%', '&:hover': { boxShadow: 6 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                  <Box sx={{ color: '#0a2b4a' }}>{item.icon}</Box>
+                  <Typography variant="h6" fontWeight="bold">
+                    {item.title}
+                  </Typography>
                 </Box>
-              </Box>
-            </Zoom>
-          </Grid>
+                <Typography variant="body2" color="textSecondary">
+                  {item.desc}
+                </Typography>
+              </Paper>
+            </Grid>
+          ))}
         </Grid>
       </Container>
-
-      {/* Stats Section */}
-      <Box sx={{ 
-        py: 10,
-        background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
-        backgroundSize: '200% 200%',
-        animation: `${gradient} 8s ease infinite`,
-        color: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            {stats.map((stat, index) => (
-              <Grid item xs={6} md={3} key={index}>
-                <Grow in={isVisible} timeout={1000} style={{ transitionDelay: `${index * 200}ms` }}>
-                  <Box sx={{ textAlign: 'center', p: 3 }}>
-                    <Box sx={{ 
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 80,
-                      height: 80,
-                      borderRadius: '50%',
-                      bgcolor: alpha(theme.palette.common.white, 0.2),
-                      mb: 2,
-                      animation: `${float} 4s ease-in-out infinite`,
-                      animationDelay: `${index * 0.5}s`,
-                    }}>
-                      {React.cloneElement(stat.icon, { sx: { fontSize: 40 } })}
-                    </Box>
-                    <Typography 
-                      variant="h2" 
-                      fontWeight="bold" 
-                      gutterBottom
-                      sx={{ 
-                        background: `linear-gradient(45deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
-                        backgroundClip: 'text',
-                        textFillColor: 'transparent',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    >
-                      {stat.number}
-                    </Typography>
-                    <Typography variant="h6" sx={{ opacity: 0.9 }}>
-                      {stat.label}
-                    </Typography>
-                  </Box>
-                </Grow>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Values Section */}
-      <ValuesSection />
-
-      {/* Team Section */}
-      <LeadershipTeam />
-          
-          
     </Box>
   );
 };
