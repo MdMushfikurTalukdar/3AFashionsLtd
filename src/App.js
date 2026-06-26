@@ -1,8 +1,13 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import About from './pages/About';
+import AboutSection from './components/AboutSection';
+import CompanyDetails from './components/CompanyDetailsPage';
+
 
 const theme = createTheme({
   palette: {
@@ -56,9 +61,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-      <Home />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/company-details" element={<CompanyDetails />} />
+          <Route path="/about-sub" element={<AboutSection />} />
+          {/* Add more routes as needed */}
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

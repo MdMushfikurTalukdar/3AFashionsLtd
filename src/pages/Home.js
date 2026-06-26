@@ -9,23 +9,30 @@ import ApparelProducts from '../components/ApparelProducts';
 import Facilities from '../components/Facilities';
 import Accreditation from '../components/Accreditation';
 import ContactSection from '../components/ContactSection';
-
 import { Box } from '@mui/material';
 
 const Home = () => {
   return (
     <>
-    <Box id="home" sx={{ overflow: 'hidden' }}></Box>
+      <Box id="home" sx={{ overflow: 'hidden' }}></Box>
       <HeroCarousel />
-      <AboutSection />
-      <Buildings />
-      <OurFactory />
+      <section id="about">
+        <AboutSection />
+      </section>
+      <section id="buildings">
+        <Buildings />
+      </section>
+      <section id="factory">
+        <OurFactory />
+      </section>
       <CorporateViewpoint />
       <ApparelProducts/>
       <OurClients />
       <Facilities />
       <Accreditation />
-      <ContactSection />
+      <section id="contact">
+        <ContactSection />
+      </section>
     </>
   );
 };

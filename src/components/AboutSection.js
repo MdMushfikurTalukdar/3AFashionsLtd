@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -33,9 +33,8 @@ const pulse = keyframes`
   100% { transform: scale(1); opacity: 0.8; }
 `;
 
-
-const AboutSection = () => {
-
+const AboutSection = ({ onNavigate }) => {
+  const navigate = useNavigate();
   const coreValues = [
     { 
       icon: <WorkspacePremium />, 
@@ -62,8 +61,6 @@ const AboutSection = () => {
       color: '#ff9800',
     },
   ];
-
-  
 
   return (
     <Box id="aboutSection" sx={{ overflow: 'hidden' }}>
@@ -124,7 +121,6 @@ const AboutSection = () => {
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <Fade in timeout={1000}>
             <Box>
-              
               <Typography
                 variant="h1"
                 component="h1"
@@ -164,6 +160,7 @@ const AboutSection = () => {
                   variant="contained"
                   size="large"
                   endIcon={<ArrowForward />}
+                  onClick={() => navigate('/company-details')} // Navigate to company details page
                   sx={{
                     px: 4,
                     py: 1.5,
@@ -178,7 +175,6 @@ const AboutSection = () => {
                 >
                   Explore Our Story
                 </Button>
-                
               </Box>
             </Box>
           </Fade>
@@ -219,12 +215,9 @@ const AboutSection = () => {
         </Box>
       </Box>
 
-      {/* Main Content */}
+      {/* About Content Section */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        
-
-        {/* About Content with Cards */}
-        <Grid container spacing={6} sx={{ mb: 6 }}>
+        <Grid container spacing={6}>
           <Grid item xs={12} md={7}>
             <Fade in timeout={1000}>
               <Box>
@@ -301,59 +294,9 @@ const AboutSection = () => {
               </Box>
             </Fade>
           </Grid>
+           
         </Grid>
-        
       </Container>
-
-      {/* Call to Action */}
-      {/* <Box
-        sx={{
-          background: 'linear-gradient(135deg, #0a2b4a 0%, #1a3a5a 100%)',
-          py: 6,
-          textAlign: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'url(https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1920&h=200&fit=crop)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.05,
-          },
-        }}
-      >
-        <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
-          <Typography variant="h4" fontWeight="bold" color="white" gutterBottom>
-            Ready to Partner With Us?
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.8)', mb: 3 }}>
-            Join hundreds of satisfied clients who trust W. Apparels for their garment manufacturing needs.
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            endIcon={<ArrowForward />}
-            sx={{
-              px: 5,
-              py: 1.5,
-              borderRadius: '50px',
-              background: 'linear-gradient(135deg, #ff6b35, #ff4500)',
-              boxShadow: '0 8px 30px rgba(255,107,53,0.4)',
-              '&:hover': {
-                transform: 'translateY(-3px)',
-                boxShadow: '0 12px 40px rgba(255,107,53,0.6)',
-              },
-            }}
-          >
-            Get In Touch
-          </Button>
-        </Container>
-      </Box> */}
     </Box>
   );
 };
