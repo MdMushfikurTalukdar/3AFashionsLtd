@@ -58,6 +58,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
+  width: '100%',
   '&:hover': {
     transform: 'translateY(-12px) scale(1.01)',
     boxShadow: '0 20px 60px rgba(99, 102, 241, 0.15)',
@@ -296,7 +297,6 @@ const buildingData = [
 const BuildingsAndOccupants = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  // ✅ Removed unused 'isTablet' and 'isDesktop' variables
   const [bookmarked, setBookmarked] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null);
 
@@ -384,26 +384,7 @@ const BuildingsAndOccupants = () => {
               Manage and view all office buildings, departments, and team members across our organization
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: { xs: 'center', md: 'flex-end' } }}>
-            <Button
-              variant="contained"
-              startIcon={<PeopleAlt />}
-              sx={{
-                borderRadius: '50px',
-                px: { xs: 2, sm: 3, md: 4 },
-                py: { xs: 1, sm: 1.5 },
-                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-                boxShadow: '0 8px 24px rgba(99, 102, 241, 0.3)',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 12px 32px rgba(99, 102, 241, 0.4)',
-                },
-              }}
-            >
-              View All Teams
-            </Button>
-          </Box>
+          
         </Box>
 
         {/* Statistics Banner */}
@@ -450,8 +431,13 @@ const BuildingsAndOccupants = () => {
         </Box>
       </Box>
 
-      {/* Cards Grid - 3 per row with responsive breakpoints */}
-      <Grid container spacing={{ xs: 2, sm: 2, md: 3, lg: 4 }}>
+      {/* Cards Grid - Properly Centered */}
+      <Grid 
+        container 
+        spacing={{ xs: 2, sm: 2, md: 3, lg: 4 }}
+        justifyContent="center"
+        alignItems="stretch"
+      >
         {buildingData.map((building, index) => (
           <Grid
             item
@@ -471,11 +457,12 @@ const BuildingsAndOccupants = () => {
               <StyledCard
                 sx={{
                   width: '100%',
-                  maxWidth: { xs: '100%', sm: '100%', md: 420 },
+                  maxWidth: { xs: '100%', sm: '100%', md: '100%', lg: '100%' },
                   display: 'flex',
                   flexDirection: 'column',
                   cursor: 'pointer',
                   height: '100%',
+                  margin: '0 auto',
                 }}
                 onClick={() => setExpandedCard(expandedCard === building.id ? null : building.id)}
               >
